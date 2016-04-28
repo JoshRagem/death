@@ -1,1 +1,5 @@
 bin/
+secrets/
+build/
+*.log
+*.success

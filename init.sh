@@ -1,3 +1,6 @@
-sudo apt-get -y install make
+cp resources/99force-ipv4 /etc/apt/apt.conf.d/
 
-make -f makfiles/init.Makefile
+apt update
+apt -y install make
+
+make -f makefiles/init.Makefile

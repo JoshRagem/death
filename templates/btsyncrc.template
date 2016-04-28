@@ -1,5 +1,5 @@
 {
-   "device_name": "$HOSTNAME",
+   "device_name": "${HOSTNAME}",
 /* use UPnP for port mapping */
   "use_upnp" : true,
 /* limits in kB/s. 0 - no limit */
@@ -9,14 +9,14 @@
   "shared_folders" :
   [
     {
-      "secret" : "BA2MZGEFA6YDZQANMQOO4A2FDLUVGAHOK", // required field - use --generate-secret in command line to create new secret
-      "dir" : "$HOME", // * required field
+      "secret" : "${BTSYNC_KEY}", // required field - use --generate-secret in command line to create new secret
+      "dir" : "${HOME}", // * required field
       "search_lan" : true,
       "use_sync_trash" : false, // enable SyncArchive to store files deleted on remote devices
       "overwrite_changes" : true, // restore modified files to original version, ONLY for Read-Only folders
       "known_hosts" : // specify hosts to attempt connection without additional search
       [
-        "swell:44444"
+        ${KNOWN_HOSTS}
       ]
     }
   ]
