@@ -35,7 +35,7 @@ if [ -e /tmp/otp_src_18.3.tar.gz ]; then
 else
     wget http://www.erlang.org/download/otp_src_18.3.tar.gz -O /tmp/otp_src_18.3.tar.gz
 fi
-tar -xvzf /tmp/otp_src_18.3.tar.gz
+tar -xvzf /tmp/otp_src_18.3.tar.gz -C /tmp/
 chmod -R 777 /tmp/otp_src_18.3
 pushd /tmp/otp_src_18.3
 ./configure
