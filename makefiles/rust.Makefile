@@ -1,17 +1,21 @@
-.DEFAULT_GOAL := install
-SHELL := /bin/bash
+SHELL := bash
 
-install: state/rustup_version
+setup: /usr/bin/curl
 
-state/rustup_version:
-	su joshua -c "bash <(curl https://sh.rustup.rs -sSf) -y"
-	bin/upsert_state_file "$(/home/joshua/.cargo/bin/rustc --version || date)" rustc_version state
+/usr/bin/curl:
+	apt install -y curl
 
-.PHONY: upsert_version
-upsert_version:
-	bin/upsert_state_file "$(/home/joshua/.cargo/bin/rustc --version || date)" rustc_version state
+install: $(HOME)/.cargo/bin/rustc /etc/bash_completion.d/rustup.bash-completion
 
-.PHONY: clean
-clean:
+/etc/bash_completion.d/rustup.bash-completion: $(HOME)/.cargo/bin/rustup /etc/bash_completion.d
+	$(HOME)/.cargo/bin/rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
 
+/etc/bash_completion.d:
+	mkdir -p /etc/bash_completion.d
+
+$(HOME)/.cargo/bin/rustc: $(HOME)/.cargo/bin/rustup
+	$(HOME)/.cargo/bin/rustup install nightly
+
+$(HOME)/.cargo/bin/rustup:
+	bash <(curl https://sh.rustup.rs -sSf) -y
 
