@@ -3,7 +3,7 @@ setup:
 install: /usr/local/bin/aws-vault /usr/bin/aws
 
 /usr/bin/aws:
-	apt install python3 python3-pip
+	apt install -y python3 python3-pip
 	pip3 install awscli --upgrade --user
 
 /usr/local/bin/aws-vault:

@@ -7,7 +7,7 @@ install: $(HOME)/bin/bu $(HOME)/bin/terraform $(HOME)/bin/argo $(HOME)/.fzf/bin/
 
 $(HOME)/.fzf/bin/fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install
+	~/.fzf/install --all
 
 $(HOME)/bin/alacritty:
 	cd $(HOME)/workspace && git clone https://github.com/jwilm/alacritty.git
