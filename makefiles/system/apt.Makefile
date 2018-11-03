@@ -5,4 +5,4 @@ setup:
 install: $(executables)
 
 $(executables):
-	apt install -y apt-transport-https gnupg2 curl vim firefox sbcl
+	apt install -y apt-transport-https gnupg2 curl vim firefox sbcl asciidoc

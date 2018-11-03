@@ -1,6 +1,7 @@
 rcfiles := $(HOME)/.sbclrc $(HOME)/.xinitrc $(HOME)/.stumpwmrc
 
 setup: $(HOME)/workspace/stumpwm
+	systemctl set-default multi-user.target
 
 $(HOME)/workspace/stumpwm: $(HOME)/workspace/touch $(rcfiles) /usr/bin/makeinfo /usr/bin/install-info
 	git clone https://github.com/stumpwm/stumpwm.git $(HOME)/workspace/stumpwm
@@ -17,7 +18,7 @@ $(HOME)/.sbclrc:
 	echo "#-quicklisp\n(let ((quicklisp-init (merge-pathnames \"quicklisp/setup.lisp\" (user-homedir-pathname))))\n(when (probe-file quicklisp-init)\n(load quicklisp-init)))" > $(HOME)/.sbclrc
 
 $(HOME)/.stumpwmrc:
-	echo ";; -*-lisp-*-\n(in-package :stumpwm)\n(setf *mouse-focus-policy* :sloppy)\n(run-shell-command "exec xautolock -detectsleep -time 3 -locker $(HOME)/bin/lock")\n(gnewbg "alt")" > $(HOME)/.stumpwmrc
+	echo ";; -*-lisp-*-\n(in-package :stumpwm)\n(setf *mouse-focus-policy* :sloppy)\n(run-shell-command \"exec xautolock -detectsleep -time 3 -locker $(HOME)/bin/lock\")\n(gnewbg \"alt\")" > $(HOME)/.stumpwmrc
 
 $(HOME)/workspace/touch:
 	mkdir -p $(HOME)/workspace
