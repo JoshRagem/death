@@ -1,7 +1,7 @@
 CODENAME := $(shell cat /etc/lsb-release | grep CODENAME | cut -d '=' -f 2)
 USER := $(shell whoami)
 
-executables := /usr/sbin/openvpn /usr/bin/startx /usr/bin/docker /usr/bin/node /usr/bin/resilio-sync /bin/gunzip
+executables := /usr/sbin/openvpn /usr/bin/startx /usr/bin/docker /usr/bin/node /usr/bin/resilio-sync /bin/gunzip /usr/bin/transmission-cli /usr/bin/flameshot
 lists := /etc/apt/sources.list.d/docker.list /etc/apt/sources.list.d/nodesource.list /etc/apt/sources.list.d/resilio-sync.list
 
 setup: $(lists)
@@ -22,6 +22,6 @@ setup: $(lists)
 install: $(executables)
 
 $(executables):
-	DEBIAN_FRONTEND=noninteractive apt install -y openvpn xinit docker-ce nodejs resilio-sync gzip
+	DEBIAN_FRONTEND=noninteractive apt install -y openvpn xinit docker-ce nodejs resilio-sync gzip transmission-cli flameshot
 	usermod -aG docker $(USER)
 

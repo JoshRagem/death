@@ -4,7 +4,8 @@ install: $(HOME)/.bash_path $(HOME)/.bash_prompt
 
 $(HOME)/.bash_path:
 	echo '. $$HOME/.bash_path' >> $(HOME)/.bashrc
-	echo 'export PATH="/home/joshua/.cargo/bin:/home/joshua/.local/bin:$$PATH'
+	echo 'mkdir -p /tmp/vim' > $(HOME)/.bash_path
+	echo 'export PATH="/home/joshua/.cargo/bin:/home/joshua/.local/bin:$$PATH' >> $(HOME)/.bash_path
 
 $(HOME)/.bash_prompt:
 	echo '. $$HOME/.bash_prompt' >> $(HOME)/.bashrc
